@@ -12,7 +12,7 @@ server {
 	root /home/m-wachi/src/ngTrain01/ngTrain01/dist;
 	index index.html;
 
-	location / {
-		try_files $uri $uri/ =404;
+	location /ngTrain01/ {
+		try_files $uri $uri/ /ngTrain01/index.html;
 	}
 }
