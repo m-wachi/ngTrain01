@@ -10,3 +10,9 @@
     ng serve
 　　だけでうまくいく。勝手に/ngTrain01をつけてリダイレクトしてくれる
 　　
+
+２．サブディレクトリを使う＋nginxをプロキシにする＋ng serveを使う
+　a) ng serve --disable-host-check  で起動
+　b) nginx -> etc/nginx/debian01aを参照
+　　　転送先にサブディレクトリはなくてOK
+
