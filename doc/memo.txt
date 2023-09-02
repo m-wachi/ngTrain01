@@ -1,0 +1,7 @@
+１．サブディレクトリを使う
+  a) buildの場合
+　   ソースを修正（リポジトリ参照）
+　　ng build --base-href /ngTrain01/
+
+  b) serveのバア愛
+　　ng serve --serve-path /ngTrain01/でもうまく行かない
