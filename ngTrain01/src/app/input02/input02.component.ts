@@ -19,7 +19,8 @@ export class Input02Component {
   };
 
   getData01a() : void {
-    this.data01a = this.path01Service.getData01();
+    //this.data01a = this.path01Service.getData01();
+    this.path01Service.getData01().subscribe(data01a => this.data01a = data01a);
   }
 
   ngOnInit(): void {

@@ -14,20 +14,6 @@ open api01.Models
 type Path01Controller (logger : ILogger<Path01Controller>) =
     inherit ControllerBase()
 
-    let summaries =
-        [|
-            "Freezing"
-            "Bracing"
-            "Chilly"
-            "Cool"
-            "Mild"
-            "Warm"
-            "Balmy"
-            "Hot"
-            "Sweltering"
-            "Scorching"
-        |]
-
     [<HttpGet>]
     member _.Get() : Data01 =
         (*
@@ -39,4 +25,4 @@ type Path01Controller (logger : ILogger<Path01Controller>) =
                   Summary = summaries.[rng.Next(summaries.Length)] }
         |]
         *)
-        Data01("abc", 3)
+        Data01("abcdef", 7)
