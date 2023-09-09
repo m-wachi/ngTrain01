@@ -1,11 +1,15 @@
 1. npm install @angular/cli
 
+(angular)
 2. npx ng new myapp01
 
 3. cd myapp01
 
 4. npx ng add @angular/material
 
+5. npx ng generate commponent XXX
+
+(dotnet)
 5. cd ..
 
 6. mkdir api01
@@ -13,3 +17,12 @@
 7. cd api01
 
 8. dotnet new webapi -lang "F#" --no-https
+
+9. add model (add .fs file)
+
+10. add controller (add controller .fs file.)
+
+
+(angular)
+11. npx ng generate service XXX
+
