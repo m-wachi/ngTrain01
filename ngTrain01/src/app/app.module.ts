@@ -12,13 +12,15 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Input01Component } from './input01/input01.component';
 import { Input02Component } from './input02/input02.component';
+import { Input03Component } from './input03/input03.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
     Input01Component,
-    Input02Component
+    Input02Component,
+    Input03Component
   ],
   imports: [
     BrowserModule,

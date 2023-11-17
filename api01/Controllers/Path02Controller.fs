@@ -12,11 +12,20 @@ open api01.Models
 
 [<ApiController>]
 [<Route("[controller]")>]
-type Path01Controller (logger : ILogger<Path01Controller>) =
+type Path02Controller (logger : ILogger<Path02Controller>) =
     inherit ControllerBase()
 
     [<HttpGet>]
     member _.Get() : Data01 =
+
+        let dbPath = "/usr/src/fsharp/core/ngTrain01/sqlite3/oldvb2cs.sqlite3"
+
+        let sqlConnectionSb = new SQLiteConnectionStringBuilder()
+        sqlConnectionSb.DataSource <- dbPath
+
+        let conn = new SQLiteConnection(sqlConnectionSb.ToString())
+
+        conn.Close()
         (*
         let rng = System.Random()
         [|
@@ -26,7 +35,7 @@ type Path01Controller (logger : ILogger<Path01Controller>) =
                   Summary = summaries.[rng.Next(summaries.Length)] }
         |]
         *)
-        Data01("abcdef", 7)
+        Data01("abcdefgg", 12)
 
 
 //
