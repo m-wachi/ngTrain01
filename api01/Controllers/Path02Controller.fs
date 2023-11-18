@@ -18,12 +18,30 @@ type Path02Controller (logger : ILogger<Path02Controller>) =
     [<HttpGet>]
     member _.Get() : Data01 =
 
-        let dbPath = "/usr/src/fsharp/core/ngTrain01/sqlite3/oldvb2cs.sqlite3"
+        //let dbPath = "/usr/src/fsharp/core/ngTrain01/sqlite3/oldvb2cs.sqlite3"
+        let dbPath = "/home/m-wachi/src/ngTrain01/sqlite3/oldvb2cs.sqlite3"
 
         let sqlConnectionSb = new SQLiteConnectionStringBuilder()
         sqlConnectionSb.DataSource <- dbPath
 
         let conn = new SQLiteConnection(sqlConnectionSb.ToString())
+
+        conn.Open();
+
+        let cmd = new SQLiteCommand(conn)
+
+        let sql = "select inq_content from t_inqform where inq_id = @inq_id"
+
+        cmd.CommandText <- sql
+
+        cmd.Parameters.AddWithValue("inq_id", 1) |> ignore
+
+        let rdr = cmd.ExecuteReader()
+
+        let bRead = rdr.Read()
+        let v = rdr.GetString(0)
+
+        rdr.Close()
 
         conn.Close()
         (*
@@ -35,7 +53,7 @@ type Path02Controller (logger : ILogger<Path02Controller>) =
                   Summary = summaries.[rng.Next(summaries.Length)] }
         |]
         *)
-        Data01("abcdefgg", 12)
+        Data01(v, 12)
 
 
 //
