@@ -19,6 +19,17 @@ export class Path02Service {
     return data01;
   }
 
+  put01(data01: Data01): Observable<Data01> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+
+    let ret = this.http.put<Data01>(this.path02Url, data01, httpOptions);
+    
+    return ret;
+  }  
 
 
 }

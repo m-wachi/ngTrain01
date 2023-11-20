@@ -15,11 +15,12 @@ open api01.Models
 type Path02Controller (logger : ILogger<Path02Controller>) =
     inherit ControllerBase()
 
+    let dbPath = "/usr/src/fsharp/core/ngTrain01/sqlite3/oldvb2cs.sqlite3"
+    //let dbPath = "/home/m-wachi/src/ngTrain01/sqlite3/oldvb2cs.sqlite3"
+
     [<HttpGet>]
     member _.Get() : Data01 =
 
-        //let dbPath = "/usr/src/fsharp/core/ngTrain01/sqlite3/oldvb2cs.sqlite3"
-        let dbPath = "/home/m-wachi/src/ngTrain01/sqlite3/oldvb2cs.sqlite3"
 
         let sqlConnectionSb = new SQLiteConnectionStringBuilder()
         sqlConnectionSb.DataSource <- dbPath
@@ -55,6 +56,27 @@ type Path02Controller (logger : ILogger<Path02Controller>) =
         *)
         Data01(v, 12)
 
+    [<HttpPut>]
+    member _.Put() : Data01 =
+        let sqlConnectionSb = new SQLiteConnectionStringBuilder()
+        sqlConnectionSb.DataSource <- dbPath
+
+        let conn = new SQLiteConnection(sqlConnectionSb.ToString())
+
+        conn.Open();
+
+        let cmd = new SQLiteCommand(conn)
+
+        let sql = "update t_inqform set inq_content=@inq_content where inq_id = @inq_id"
+
+        cmd.CommandText <- sql
+
+        cmd.Parameters.AddWithValue("inq_id", 1) |> ignore
+        cmd.Parameters.AddWithValue("inq_content", "test03") |> ignore
+
+        cmd.ExecuteNonQuery() |> ignore
+
+        Data01("v", 12)
 
 //
 // コピーコード
