@@ -57,7 +57,7 @@ type Path02Controller (logger : ILogger<Path02Controller>) =
         Data01(v, 12)
 
     [<HttpPut>]
-    member _.Put() : Data01 =
+    member _.Put(pData: Data01) : Data01 =
         let sqlConnectionSb = new SQLiteConnectionStringBuilder()
         sqlConnectionSb.DataSource <- dbPath
 
@@ -72,11 +72,11 @@ type Path02Controller (logger : ILogger<Path02Controller>) =
         cmd.CommandText <- sql
 
         cmd.Parameters.AddWithValue("inq_id", 1) |> ignore
-        cmd.Parameters.AddWithValue("inq_content", "test03") |> ignore
+        cmd.Parameters.AddWithValue("inq_content", pData.Prop01) |> ignore
 
         cmd.ExecuteNonQuery() |> ignore
 
-        Data01("v", 12)
+        Data01(pData.Prop01, 12)
 
 //
 // コピーコード
